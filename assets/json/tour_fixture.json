@@ -1,0 +1,379 @@
+{
+    "ok": true,
+    "data": {
+        "item": {
+            "id": 5,
+            "uuid": "1fbdc5d7-8bc2-4d11-9e39-f621d8f554c9",
+            "slug": "transport-qa-publish-test",
+            "title_fa": "تست نهایی حمل‌ونقل",
+            "title_en": "Local Test ",
+            "title_ar": null,
+            "summary_fa": "پکیج اختصاصی برای تست نهایی انتشار و rollback حمل‌ونقل.",
+            "summary_en": "Dedicated package for final transport publish and rollback QA.",
+            "summary_ar": null,
+            "description_fa": "این پکیج فقط برای تست‌های Task 99 ساخته شده است.",
+            "description_en": "This package is created only for Task 99 QA tests.",
+            "description_ar": null,
+            "date_model": "fixed_date",
+            "duration_model": "fixed_duration",
+            "journey_model": "single_destination",
+            "operation_model": "individual",
+            "guidance_model": "independent",
+            "booking_model": "request_to_book",
+            "pricing_display_model": "bundled",
+            "package_anchor": "destination",
+            "redemption_model": "fixed_booking",
+            "valid_from": null,
+            "valid_to": null,
+            "default_start_date": "2026-07-10",
+            "default_end_date": "2026-08-13",
+            "fixed_days": 35,
+            "fixed_nights": 34,
+            "min_nights": null,
+            "max_nights": null,
+            "currency": "IRT",
+            "base_price_from": 25000000,
+            "primary_country": "Turkey",
+            "primary_city": "Istanbul",
+            "destination_label": "استانبول، ترکیه",
+            "is_featured": 0,
+            "sort_order": 0,
+            "themes_json": [
+                "qa"
+            ],
+            "tags_json": [
+                "transport-qa"
+            ],
+            "published_at": "2026-07-17 12:40:02",
+            "created_at": "2026-06-24 20:49:30",
+            "updated_at": "2026-07-17 12:40:02",
+            "departures": {
+                "items": []
+            },
+            "media": {
+                "cover": {
+                    "uuid": "e76cdd61-4c41-4e2d-a673-6e6eb40cce0c",
+                    "url": "/uploads/tours_package/e76cdd61-4c41-4e2d-a673-6e6eb40cce0c.jpg",
+                    "mime_type": "image/jpeg",
+                    "filename": "pexels-dominykas-2834999-4411214.jpg"
+                },
+                "gallery": [],
+                "attachment": []
+            },
+            "destinations": [
+                {
+                    "id": 3,
+                    "uuid": "8cc49c12-2b6e-4676-b273-b903d5c1751d",
+                    "slug": "istanbultr",
+                    "title_fa": "استانبول",
+                    "title_en": "Istanbul",
+                    "title_ar": "إسطنبول",
+                    "summary_fa": "یکی از محبوب‌ترین مقصدهای گردشگری ترکیه.",
+                    "summary_en": "One of Turkey's most popular travel destinations.",
+                    "summary_ar": "واحدة من أشهر وجهات السفر في تركيا.",
+                    "destination_type": "city",
+                    "country_code": "TR",
+                    "country_name_fa": "ترکیه",
+                    "country_name_en": "Turkey",
+                    "country_name_ar": "تركيا",
+                    "city_name_fa": "استانبول",
+                    "city_name_en": "Istanbul",
+                    "city_name_ar": "إسطنبول",
+                    "region_name_fa": null,
+                    "region_name_en": null,
+                    "region_name_ar": null,
+                    "latitude": 41.0082,
+                    "longitude": 28.9784,
+                    "is_primary": 1,
+                    "sort_order": 10
+                }
+            ],
+            "tags": [
+                {
+                    "id": 3,
+                    "uuid": "71d7c0af-b232-41fd-8ba7-30225050f4a8",
+                    "slug": "familytours",
+                    "name_fa": "خانوادگی",
+                    "name_en": "Family",
+                    "name_ar": "عائلي",
+                    "description_fa": "مناسب برای تورهای خانوادگی و سفر با کودک.",
+                    "description_en": "Suitable for family-friendly tours and trips with children.",
+                    "description_ar": "مناسب للجولات العائلية والسفر مع الأطفال.",
+                    "tag_group": "audience",
+                    "is_featured": 0,
+                    "sort_order": 121
+                }
+            ],
+            "segments": [
+                {
+                    "id": 15,
+                    "uuid": "88a32425-0123-48e2-ad10-943b78e30f15",
+                    "destination": {
+                        "id": 3,
+                        "uuid": "8cc49c12-2b6e-4676-b273-b903d5c1751d",
+                        "slug": "istanbultr",
+                        "title_fa": "استانبول",
+                        "title_en": "Istanbul",
+                        "title_ar": "إسطنبول",
+                        "summary_fa": "یکی از محبوب‌ترین مقصدهای گردشگری ترکیه.",
+                        "summary_en": "One of Turkey's most popular travel destinations.",
+                        "summary_ar": "واحدة من أشهر وجهات السفر في تركيا.",
+                        "destination_type": "city",
+                        "country_code": "TR",
+                        "country_name_fa": "ترکیه",
+                        "country_name_en": "Turkey",
+                        "country_name_ar": "تركيا",
+                        "city_name_fa": "استانبول",
+                        "city_name_en": "Istanbul",
+                        "city_name_ar": "إسطنبول",
+                        "region_name_fa": null,
+                        "region_name_en": null,
+                        "region_name_ar": null,
+                        "latitude": 41.0082,
+                        "longitude": 28.9784
+                    },
+                    "title_fa": "اقامت در استانبول",
+                    "title_en": "Stay in Istanbul",
+                    "title_ar": "الإقامة في إسطنبول",
+                    "description_fa": "ورود و اقامت در استانبول",
+                    "description_en": "Arrival and stay in Istanbul",
+                    "description_ar": "الوصول والإقامة في إسطنبول",
+                    "sort_order": 5,
+                    "start_date": "2026-07-10",
+                    "end_date": "2026-07-14",
+                    "fixed_days": 5,
+                    "fixed_nights": 4
+                },
+                {
+                    "id": 14,
+                    "uuid": "297f84a2-206f-4ddf-976c-063fae88f3df",
+                    "destination": {
+                        "id": 3,
+                        "uuid": "8cc49c12-2b6e-4676-b273-b903d5c1751d",
+                        "slug": "istanbultr",
+                        "title_fa": "استانبول",
+                        "title_en": "Istanbul",
+                        "title_ar": "إسطنبول",
+                        "summary_fa": "یکی از محبوب‌ترین مقصدهای گردشگری ترکیه.",
+                        "summary_en": "One of Turkey's most popular travel destinations.",
+                        "summary_ar": "واحدة من أشهر وجهات السفر في تركيا.",
+                        "destination_type": "city",
+                        "country_code": "TR",
+                        "country_name_fa": "ترکیه",
+                        "country_name_en": "Turkey",
+                        "country_name_ar": "تركيا",
+                        "city_name_fa": "استانبول",
+                        "city_name_en": "Istanbul",
+                        "city_name_ar": "إسطنبول",
+                        "region_name_fa": null,
+                        "region_name_en": null,
+                        "region_name_ar": null,
+                        "latitude": 41.0082,
+                        "longitude": 28.9784
+                    },
+                    "title_fa": "سگمنت تست حمل‌ونقل استانبول",
+                    "title_en": "Istanbul Transport QA Segment",
+                    "title_ar": null,
+                    "description_fa": "سگمنت اختصاصی برای تست Publish Validation حمل‌ونقل.",
+                    "description_en": "Dedicated segment for transport publish validation QA.",
+                    "description_ar": null,
+                    "sort_order": 10,
+                    "start_date": "2026-08-10",
+                    "end_date": "2026-08-13",
+                    "fixed_days": 4,
+                    "fixed_nights": 3
+                }
+            ],
+            "accommodation_policy": "none",
+            "hotels": {
+                "items": []
+            },
+            "transport_policy": "mixed",
+            "transports": {
+                "items": [
+                    {
+                        "transport_reference_type": "generic_transport",
+                        "assignment_scope": "segment",
+                        "direction": "transfer",
+                        "transport_type": "private_transfer",
+                        "transfer_type": null,
+                        "vehicle_type": null,
+                        "segment": {
+                            "sort_order": 10,
+                            "title": {
+                                "fa": "سگمنت تست حمل‌ونقل استانبول",
+                                "en": "Istanbul Transport QA Segment",
+                                "ar": null
+                            }
+                        },
+                        "transport": null,
+                        "provider_name": "QA Active Transfer",
+                        "route": {
+                            "origin": {
+                                "code": "IST",
+                                "label": {
+                                    "fa": "فرودگاه استانبول",
+                                    "en": "Istanbul Airport",
+                                    "ar": "مطار إسطنبول"
+                                }
+                            },
+                            "destination": {
+                                "code": null,
+                                "label": {
+                                    "fa": "هتل تست",
+                                    "en": "QA Hotel",
+                                    "ar": "فندق الاختبار"
+                                }
+                            }
+                        },
+                        "departure_at": null,
+                        "arrival_at": null,
+                        "departure_timezone": null,
+                        "arrival_timezone": null,
+                        "duration_minutes": null,
+                        "service_class": "private",
+                        "baggage_summary": {
+                            "fa": null,
+                            "en": null,
+                            "ar": null
+                        },
+                        "display_label": {
+                            "fa": "ترانسفر فعال تست",
+                            "en": "Active QA transfer",
+                            "ar": "نقل اختباري نشط"
+                        },
+                        "is_primary": true,
+                        "is_required": true,
+                        "pricing_mode": "included",
+                        "sort_order": 10
+                    },
+                    {
+                        "transport_reference_type": "generic_transport",
+                        "assignment_scope": "package",
+                        "direction": "outbound",
+                        "transport_type": "bus",
+                        "transfer_type": null,
+                        "vehicle_type": null,
+                        "segment": null,
+                        "transport": null,
+                        "provider_name": "QA Package Coach",
+                        "route": {
+                            "origin": {
+                                "code": "THR",
+                                "label": {
+                                    "fa": "تهران",
+                                    "en": "Tehran",
+                                    "ar": "طهران"
+                                }
+                            },
+                            "destination": {
+                                "code": "IST",
+                                "label": {
+                                    "fa": "استانبول",
+                                    "en": "Istanbul",
+                                    "ar": "إسطنبول"
+                                }
+                            }
+                        },
+                        "departure_at": null,
+                        "arrival_at": null,
+                        "departure_timezone": null,
+                        "arrival_timezone": null,
+                        "duration_minutes": null,
+                        "service_class": "standard",
+                        "baggage_summary": {
+                            "fa": null,
+                            "en": null,
+                            "ar": null
+                        },
+                        "display_label": {
+                            "fa": "اتوبوس تهران به استانبول",
+                            "en": "Tehran to Istanbul coach",
+                            "ar": "حافلة من طهران إلى إسطنبول"
+                        },
+                        "is_primary": true,
+                        "is_required": true,
+                        "pricing_mode": "included",
+                        "sort_order": 20
+                    }
+                ]
+            },
+            "service_policy": "package_level",
+            "services": {
+                "items": [
+                    {
+                        "scope": "package",
+                        "segment": null,
+                        "reference_type": "specific_service",
+                        "type": "insurance",
+                        "name": {
+                            "fa": "بیمه مسافرتی کامل",
+                            "en": "Premium Travel Insurance",
+                            "ar": "تأمين سفر شامل"
+                        },
+                        "description": {
+                            "fa": "بیمه مسافرتی با پوشش کامل برای مدت سفر.",
+                            "en": "Comprehensive travel insurance for the full trip duration.",
+                            "ar": "تأمين سفر شامل طوال مدة الرحلة."
+                        },
+                        "inclusion_mode": "included",
+                        "pricing": {
+                            "amount": "15.00",
+                            "currency": "USD",
+                            "unit": "per_person"
+                        },
+                        "quantity": "1.00",
+                        "sort_order": 10
+                    }
+                ]
+            },
+            "pricing": {
+                "pricing_model": "fixed_configuration",
+                "display_mode": "from",
+                "currency": "EUR",
+                "requires_quote": false,
+                "primary": {
+                    "code": "standard_price",
+                    "pricing_basis": "per_person_double_occupancy",
+                    "amount": "875.00",
+                    "label": {
+                        "fa": "هر نفر در اتاق دو نفره",
+                        "en": "Per person in a double room",
+                        "ar": "لكل شخص في غرفة مزدوجة"
+                    },
+                    "note": {
+                        "fa": null,
+                        "en": null,
+                        "ar": null
+                    },
+                    "accommodation_plan": []
+                },
+                "options": [
+                    {
+                        "code": "vip_suite",
+                        "pricing_basis": "per_person_custom_accommodation",
+                        "amount": "1450.00",
+                        "label": {
+                            "fa": "هر نفر در سوئیت VIP",
+                            "en": "Per person in a VIP suite",
+                            "ar": "لكل شخص في جناح VIP"
+                        },
+                        "note": {
+                            "fa": "گزینه اقامت ویژه و لاکچری.",
+                            "en": "Premium luxury accommodation option.",
+                            "ar": "خيار إقامة فاخر ومميز."
+                        },
+                        "accommodation_plan": []
+                    }
+                ],
+                "accommodation_plan": [],
+                "accommodation_choices": [],
+                "note": {
+                    "fa": "قیمت‌ها بر اساس نوع اقامت متفاوت هستند.",
+                    "en": "Prices vary depending on the accommodation option.",
+                    "ar": "تختلف الأسعار حسب خيار الإقامة."
+                }
+            }
+        }
+    }
+}
