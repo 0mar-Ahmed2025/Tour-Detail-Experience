@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../core/errors/failures.dart';
@@ -25,6 +27,7 @@ class TourRepositoryImpl implements TourRepository {
         final localData = await localDataSource.getTourPackageFixture();
         return Right(localData);
       } catch (e) {
+        log(e.toString());
         return const Left(ParsingFailure('Failed to load local fixture JSON'));
       }
     }

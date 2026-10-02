@@ -28,7 +28,8 @@ class AppRouter {
           );
 
           return BlocProvider(
-            create: (context) => TourDetailCubit(repository: repository),
+            create: (context) =>
+                TourDetailCubit(repository: repository)..loadTourDetail(slug),
             child: TourDetailScreen(slug: slug),
           );
         },

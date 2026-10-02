@@ -5,7 +5,7 @@ class LocalizedTextModel {
 
   const LocalizedTextModel({this.fa, this.en, this.ar});
 
-  String get displayValue => ar ?? en ?? fa ?? '';
+  String get displayValue => en ?? ar ?? fa ?? '';
 
   factory LocalizedTextModel.fromJson(dynamic json) {
     if (json == null) return const LocalizedTextModel();

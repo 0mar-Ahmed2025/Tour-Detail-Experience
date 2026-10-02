@@ -29,7 +29,7 @@
             "default_end_date": "2026-08-13",
             "fixed_days": 35,
             "fixed_nights": 34,
-            "min_nights": null,
+            "min_nights": "145522",
             "max_nights": null,
             "currency": "IRT",
             "base_price_from": 25000000,
@@ -53,7 +53,7 @@
             "media": {
                 "cover": {
                     "uuid": "e76cdd61-4c41-4e2d-a673-6e6eb40cce0c",
-                    "url": "/uploads/tours_package/e76cdd61-4c41-4e2d-a673-6e6eb40cce0c.jpg",
+                    "url": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=1200&auto=format&fit=crop",
                     "mime_type": "image/jpeg",
                     "filename": "pexels-dominykas-2834999-4411214.jpg"
                 },

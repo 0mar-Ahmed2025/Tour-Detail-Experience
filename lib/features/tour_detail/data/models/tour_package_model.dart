@@ -1,3 +1,5 @@
+import 'package:rehletna_mobile/features/tour_detail/data/models/tag_model.dart';
+
 import 'cover_media_model.dart';
 import 'destination_model.dart';
 import 'localized_text_model.dart';
@@ -29,6 +31,7 @@ class TourPackageModel {
   final LocalizedTextModel title;
   final LocalizedTextModel summary;
   final LocalizedTextModel description;
+  final String bookingModel;
   final String? defaultStartDate;
   final String? defaultEndDate;
   final int? fixedDays;
@@ -43,6 +46,8 @@ class TourPackageModel {
   final List<SegmentModel> segments;
   final List<TransportModel> transports;
   final List<ServiceModel> services;
+  final List<TagModel> tags;
+
   final PackagePricingModel? pricing;
 
   const TourPackageModel({
@@ -67,6 +72,8 @@ class TourPackageModel {
     required this.transports,
     required this.services,
     this.pricing,
+    required this.tags,
+    required this.bookingModel,
   });
 
   factory TourPackageModel.fromJson(Map<String, dynamic> json) {
@@ -89,6 +96,7 @@ class TourPackageModel {
         en: json['description_en'] as String?,
         ar: json['description_ar'] as String?,
       ),
+      bookingModel: json['booking_model'] as String? ?? '',
       defaultStartDate: json['default_start_date'] as String?,
       defaultEndDate: json['default_end_date'] as String?,
       fixedDays: json['fixed_days'] as int?,
@@ -112,6 +120,9 @@ class TourPackageModel {
           .toList(),
       services: (json['services']?['items'] as List? ?? [])
           .map((x) => ServiceModel.fromJson(x))
+          .toList(),
+      tags: (json['tags'] as List? ?? [])
+          .map((x) => TagModel.fromJson(x))
           .toList(),
       pricing: json['pricing'] != null
           ? PackagePricingModel.fromJson(json['pricing'])

@@ -8,8 +8,8 @@ class SegmentModel {
   final int sortOrder;
   final String? startDate;
   final String? endDate;
-  final int fixedDays;
-  final int fixedNights;
+  final int? fixedDays;
+  final int? fixedNights;
 
   const SegmentModel({
     required this.id,
