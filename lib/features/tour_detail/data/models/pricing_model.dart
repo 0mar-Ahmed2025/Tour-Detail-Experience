@@ -4,6 +4,8 @@ class PackagePricingModel {
   final String pricingModel;
   final String currency;
   final bool requiresQuote;
+  final String displayMode;
+  final String? amountFrom;
   final PriceOptionModel? primary;
   final List<PriceOptionModel> options;
   final LocalizedTextModel note;
@@ -12,6 +14,8 @@ class PackagePricingModel {
     required this.pricingModel,
     required this.currency,
     required this.requiresQuote,
+    required this.displayMode,
+    this.amountFrom,
     this.primary,
     required this.options,
     required this.note,
@@ -22,6 +26,8 @@ class PackagePricingModel {
       pricingModel: json['pricing_model'] as String? ?? '',
       currency: json['currency'] as String? ?? '',
       requiresQuote: json['requires_quote'] as bool? ?? false,
+      displayMode: json['display_mode'] as String? ?? '',
+      amountFrom: json['amount_from']?.toString(),
       primary: json['primary'] != null
           ? PriceOptionModel.fromJson(json['primary'])
           : null,
@@ -52,7 +58,7 @@ class PriceOptionModel {
     return PriceOptionModel(
       code: json['code'] as String? ?? '',
       pricingBasis: json['pricing_basis'] as String? ?? '',
-      amount: json['amount'] as String? ?? '0.00',
+      amount: json['amount']?.toString() ?? '',
       label: LocalizedTextModel.fromJson(json['label']),
       note: LocalizedTextModel.fromJson(json['note']),
     );

@@ -24,6 +24,22 @@ class TourPackageResponseModel {
   }
 }
 
+class TourDepartureModel {
+  final int? id;
+  final String? uuid;
+  final String? departureDate;
+
+  const TourDepartureModel({this.id, this.uuid, this.departureDate});
+
+  factory TourDepartureModel.fromJson(Map<String, dynamic> json) {
+    return TourDepartureModel(
+      id: json['id'] as int?,
+      uuid: json['uuid'] as String?,
+      departureDate: json['departure_date'] as String?,
+    );
+  }
+}
+
 class TourPackageModel {
   final int id;
   final String uuid;
@@ -32,6 +48,13 @@ class TourPackageModel {
   final LocalizedTextModel summary;
   final LocalizedTextModel description;
   final String bookingModel;
+  final String dateModel;
+  final String durationModel;
+  final String journeyModel;
+  final String operationModel;
+  final String guidanceModel;
+  final String transportPolicy;
+  final String servicePolicy;
   final String? defaultStartDate;
   final String? defaultEndDate;
   final int? fixedDays;
@@ -42,11 +65,15 @@ class TourPackageModel {
   final String primaryCity;
   final String destinationLabel;
   final CoverMediaModel? coverMedia;
+  final List<CoverMediaModel> gallery;
+  final List<TourAttachmentModel> attachments;
+  final List<TourDepartureModel> departures;
   final List<DestinationModel> destinations;
   final List<SegmentModel> segments;
   final List<TransportModel> transports;
   final List<ServiceModel> services;
   final List<TagModel> tags;
+  final List<String> themes;
 
   final PackagePricingModel? pricing;
 
@@ -67,6 +94,9 @@ class TourPackageModel {
     required this.primaryCity,
     required this.destinationLabel,
     this.coverMedia,
+    required this.gallery,
+    required this.attachments,
+    required this.departures,
     required this.destinations,
     required this.segments,
     required this.transports,
@@ -74,6 +104,14 @@ class TourPackageModel {
     this.pricing,
     required this.tags,
     required this.bookingModel,
+    required this.dateModel,
+    required this.durationModel,
+    required this.journeyModel,
+    required this.operationModel,
+    required this.guidanceModel,
+    required this.transportPolicy,
+    required this.servicePolicy,
+    required this.themes,
   });
 
   factory TourPackageModel.fromJson(Map<String, dynamic> json) {
@@ -97,6 +135,13 @@ class TourPackageModel {
         ar: json['description_ar'] as String?,
       ),
       bookingModel: json['booking_model'] as String? ?? '',
+      dateModel: json['date_model'] as String? ?? '',
+      durationModel: json['duration_model'] as String? ?? '',
+      journeyModel: json['journey_model'] as String? ?? '',
+      operationModel: json['operation_model'] as String? ?? '',
+      guidanceModel: json['guidance_model'] as String? ?? '',
+      transportPolicy: json['transport_policy'] as String? ?? 'mixed',
+      servicePolicy: json['service_policy'] as String? ?? 'mixed',
       defaultStartDate: json['default_start_date'] as String?,
       defaultEndDate: json['default_end_date'] as String?,
       fixedDays: json['fixed_days'] as int?,
@@ -109,6 +154,15 @@ class TourPackageModel {
       coverMedia: json['media']?['cover'] != null
           ? CoverMediaModel.fromJson(json['media']['cover'])
           : null,
+      gallery: ((json['media']?['gallery'] as List?) ?? [])
+          .map((item) => CoverMediaModel.fromJson(item))
+          .toList(),
+      attachments: ((json['media']?['attachment'] as List?) ?? [])
+          .map((item) => TourAttachmentModel.fromJson(item))
+          .toList(),
+      departures: ((json['departures']?['items'] as List?) ?? [])
+          .map((item) => TourDepartureModel.fromJson(item))
+          .toList(),
       destinations: (json['destinations'] as List? ?? [])
           .map((x) => DestinationModel.fromJson(x))
           .toList(),
@@ -124,6 +178,7 @@ class TourPackageModel {
       tags: (json['tags'] as List? ?? [])
           .map((x) => TagModel.fromJson(x))
           .toList(),
+      themes: (json['themes_json'] as List? ?? []).whereType<String>().toList(),
       pricing: json['pricing'] != null
           ? PackagePricingModel.fromJson(json['pricing'])
           : null,

@@ -18,10 +18,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Tour Package Detail',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-        useMaterial3: true,
-      ),
       routerConfig: AppRouter.router,
     );
   }

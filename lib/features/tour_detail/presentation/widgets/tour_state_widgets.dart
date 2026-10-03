@@ -1,4 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:rehletna_mobile/features/tour_detail/data/models/tour_package_model.dart';
+import 'package:rehletna_mobile/features/tour_detail/domain/extensions/tour_processing_extensions.dart';
+import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/accommodation_pricing_section_widget.dart';
+import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/bottom_booking_bar_widget.dart';
+import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/included_services_section_widget.dart';
+import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/quick_stats_bento_section_widget.dart';
+import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/segments_section.dart';
+import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/summary_description_card.dart';
+import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/tour_app_bar_widget.dart';
+import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/tour_hero_header_widget.dart';
+import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/transports_section.dart';
 
 class TourLoadingView extends StatelessWidget {
   const TourLoadingView({super.key});
@@ -94,6 +105,104 @@ class TourNotFoundView extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class TourSuccessView extends StatelessWidget {
+  const TourSuccessView({
+    super.key,
+    required this.package,
+    required this.categoryName,
+    required this.suitabilityText,
+    required this.hasPrimaryPricing,
+  });
+
+  final TourPackageModel package;
+  final String categoryName;
+  final String suitabilityText;
+  final bool hasPrimaryPricing;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const TourAppBarWidget(),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            TourHeroHeaderWidget(
+              imageUrl: package.coverImageUrl ?? "",
+              location: "${package.primaryCity}, ${package.primaryCountry}",
+              category: categoryName,
+              slug: package.slug,
+              id: package.id.toString(),
+              title: package.title.displayValue,
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Transform.translate(
+                offset: const Offset(0, -14),
+                child: Column(
+                  children: [
+                    QuickStatsBento(
+                      durationText: package.durationText,
+                      datesText:
+                          "${package.defaultStartDate ?? ''} - ${package.defaultEndDate ?? ''}",
+                      bookingModelText: package.bookingModel,
+                    ),
+                    const SizedBox(height: 20),
+                    SummaryDescriptionCard(
+                      packageSummary: package.summary.displayValue,
+                      description: package.description.displayValue,
+                      suitabilityText: suitabilityText,
+                    ),
+                    const SizedBox(height: 24),
+
+                    if (package.segments.isNotEmpty) ...[
+                      SegmentsSection(segments: package.sortedSegments),
+                      const SizedBox(height: 24),
+                    ],
+
+                    if (package.transports.isNotEmpty) ...[
+                      TransportsSection(transports: package.sortedTransports),
+                      const SizedBox(height: 24),
+                    ],
+
+                    if (package.services.isNotEmpty) ...[
+                      IncludedServicesSectionWidget(
+                        services: package.sortedServices,
+                      ),
+                      const SizedBox(height: 24),
+                    ],
+
+                    if (hasPrimaryPricing) ...[
+                      AccommodationPricingSectionWidget(
+                        pricingModel: package.pricing!,
+                        selectedCode: package.pricing!.primary!.code,
+                        basePrice: package.basePriceFrom,
+                        currency: package.currency,
+                        isSelected: true,
+                      ),
+                      const SizedBox(height: 32),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: hasPrimaryPricing
+          ? BottomBookingBarWidget(
+              onRequestToBook: () {},
+              startingPrice: package.pricing!.primary!.amount,
+              currency: package.pricing!.currency,
+              startingPriceIrt: package.basePriceFrom.toString(),
+              packageCurrency: package.currency,
+            )
+          : const SizedBox.shrink(),
     );
   }
 }
