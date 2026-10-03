@@ -5,7 +5,6 @@ class BottomBookingBarWidget extends StatelessWidget {
   final String? startingPriceIrt;
   final String? currency;
   final String? packageCurrency;
-
   final VoidCallback? onRequestToBook;
 
   const BottomBookingBarWidget({
@@ -19,6 +18,15 @@ class BottomBookingBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String mainPrice = "$startingPrice ${currency ?? ''}".trim();
+    final bool hasIrtPrice =
+        startingPriceIrt != null && startingPriceIrt!.trim().isNotEmpty;
+    final String irtPrice = hasIrtPrice
+        ? "$startingPriceIrt ${packageCurrency ?? ''}".trim()
+        : "";
+
+    final bool isButtonEnabled = onRequestToBook != null;
+
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFFF7F9FB).withValues(alpha: 0.96),
@@ -40,47 +48,59 @@ class BottomBookingBarWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Starting from',
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF74777D),
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    "$startingPrice $currency",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w800,
-                      color: Color(0xFF191C1E),
-                    ),
-                  ),
-                  if (startingPriceIrt != null && packageCurrency != null) ...[
-                    const SizedBox(height: 1),
-                    Text(
-                      "$startingPriceIrt $packageCurrency",
-                      style: const TextStyle(
-                        fontFamily: 'monospace',
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Starting from',
+                      style: TextStyle(
                         fontSize: 11,
-                        color: Color(0xFF74777D),
                         fontWeight: FontWeight.w600,
+                        color: Color(0xFF74777D),
                       ),
                     ),
+                    const SizedBox(height: 2),
+
+                    Text(
+                      mainPrice,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                        color: Color(0xFF191C1E),
+                      ),
+                    ),
+                    if (hasIrtPrice) ...[
+                      const SizedBox(height: 1),
+                      Text(
+                        irtPrice,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontFamily: 'monospace',
+                          fontSize: 11,
+                          color: Color(0xFF74777D),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
+
+              const SizedBox(width: 16),
+
               ElevatedButton(
                 onPressed: onRequestToBook,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF0F1C2C),
                   foregroundColor: Colors.white,
-                  elevation: 4,
+                  disabledBackgroundColor: const Color(0xFFE6E8EA),
+                  disabledForegroundColor: const Color(0xFFA0A3A8),
+                  elevation: isButtonEnabled ? 4 : 0,
                   shadowColor: const Color(0xFF0F1C2C).withValues(alpha: 0.3),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -90,9 +110,9 @@ class BottomBookingBarWidget extends StatelessWidget {
                     vertical: 14,
                   ),
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
+                  children: [
                     Text(
                       'Request to Book',
                       style: TextStyle(

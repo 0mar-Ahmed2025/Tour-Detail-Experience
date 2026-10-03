@@ -72,3 +72,37 @@ extension TourPackageX on TourPackageModel {
     return list;
   }
 }
+
+
+extension PackageScopedComponentsX on TourPackageModel {
+  List<TransportModel> get globalTransports {
+    return transports.where((t) => t.assignmentScope == 'package' || t.segment == null).toList()
+      ..sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
+  }
+  List<ServiceModel> get globalServices {
+    return services.where((s) => s.scope == 'package' || s.segment == null).toList()
+      ..sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
+  }
+}
+
+extension SegmentComponentsX on SegmentModel {
+  List<TransportModel> getTransports(List<TransportModel> allTransports) {
+    return allTransports.where((t) {
+      final isSegmentScope = t.assignmentScope == 'segment';
+      final matchesId = t.segment?.id != null && t.segment!.id == id;
+      final matchesUuid = t.segment?.uuid != null && t.segment!.uuid == uuid;
+      return isSegmentScope && (matchesId || matchesUuid);
+    }).toList()
+      ..sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
+  }
+
+  List<ServiceModel> getServices(List<ServiceModel> allServices) {
+    return allServices.where((s) {
+      final isSegmentScope = s.scope == 'segment';
+      final matchesId = s.segment?.id != null && s.segment!.id == id;
+      final matchesUuid = s.segment?.uuid != null && s.segment!.uuid == uuid;
+      return isSegmentScope && (matchesId || matchesUuid);
+    }).toList()
+      ..sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
+  }
+}

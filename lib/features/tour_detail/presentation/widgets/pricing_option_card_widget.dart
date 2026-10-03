@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rehletna_mobile/features/tour_detail/data/models/pricing_model.dart';
 
-
 class PricingOptionCardWidget extends StatelessWidget {
   final PriceOptionModel option;
   final bool isSelected;
@@ -18,6 +17,8 @@ class PricingOptionCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool hasNote = option.note.displayValue.trim().isNotEmpty;
+
     return GestureDetector(
       onTap: () => onSelected?.call(option.code),
       child: AnimatedContainer(
@@ -32,7 +33,7 @@ class PricingOptionCardWidget extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF0F1C2C).withValues(alpha: 0.06),
+              color: const Color(0xFF0F1C2C).withValues(alpha: 0.05),
               blurRadius: 20,
               offset: const Offset(0, 4),
             ),
@@ -66,9 +67,10 @@ class PricingOptionCardWidget extends StatelessWidget {
                       fontSize: 15,
                       fontWeight: FontWeight.w700,
                       color: Color(0xFF191C1E),
+                      height: 1.3,
                     ),
                   ),
-                  if (option.note.displayValue.isNotEmpty) ...[
+                  if (hasNote) ...[
                     const SizedBox(height: 3),
                     Text(
                       option.note.displayValue,
@@ -92,11 +94,12 @@ class PricingOptionCardWidget extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(width: 8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "${option.amount} ${pricingCurrency ?? ""}",
+                  "${option.amount} ${pricingCurrency ?? ""}".trim(),
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,

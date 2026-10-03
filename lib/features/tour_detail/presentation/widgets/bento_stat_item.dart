@@ -15,7 +15,7 @@ class BentoStatItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -31,6 +31,8 @@ class BentoStatItem extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w500,
@@ -40,11 +42,14 @@ class BentoStatItem extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            value,
+            value.trim().isEmpty ? 'N/A' : value,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: FontWeight.w700,
               color: Color(0xFF191C1E),
+              height: 1.2,
             ),
             textAlign: TextAlign.center,
           ),

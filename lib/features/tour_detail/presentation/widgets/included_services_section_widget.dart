@@ -9,6 +9,10 @@ class IncludedServicesSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (services.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -31,13 +35,15 @@ class IncludedServicesSectionWidget extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 14),
-        Column(
-          children: [
-            for (int i = 0; i < services.length; i++) ...[
-              IncludedServiceCardWidget(service: services[i]),
-              if (i < services.length - 1) const SizedBox(height: 12),
-            ],
-          ],
+
+        ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: services.length,
+          separatorBuilder: (context, index) => const SizedBox(height: 12),
+          itemBuilder: (context, index) {
+            return IncludedServiceCardWidget(service: services[index]);
+          },
         ),
       ],
     );

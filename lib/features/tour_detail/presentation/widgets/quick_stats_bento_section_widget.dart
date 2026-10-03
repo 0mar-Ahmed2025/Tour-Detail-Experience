@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/bento_stat_item.dart';
+// import 'package:easy_localization/easy_localization.dart';
+import 'bento_stat_item.dart';
 
 class QuickStatsBento extends StatelessWidget {
   final String durationText;
@@ -13,10 +14,15 @@ class QuickStatsBento extends StatelessWidget {
     required this.bookingModelText,
   });
 
+  String _formatBookingModel(String raw) {
+    if (raw.trim().isEmpty) return 'Standard';
+    return raw.replaceAll('_', ' ').toUpperCase();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -33,24 +39,25 @@ class QuickStatsBento extends StatelessWidget {
           Expanded(
             child: BentoStatItem(
               icon: Icons.calendar_today_outlined,
-              label: 'Duration',
+              label: 'Duration', // مستقبلاً: 'duration'.tr()
               value: durationText,
             ),
           ),
-          Container(width: 1, height: 48, color: const Color(0xFFECEEF0)),
+          Container(width: 1, height: 44, color: const Color(0xFFECEEF0)),
           Expanded(
             child: BentoStatItem(
               icon: Icons.date_range_outlined,
-              label: 'Dates',
+              label: 'Dates', // مستقبلاً: 'dates'.tr()
               value: datesText,
             ),
           ),
-          Container(width: 1, height: 48, color: const Color(0xFFECEEF0)),
+          Container(width: 1, height: 44, color: const Color(0xFFECEEF0)),
           Expanded(
             child: BentoStatItem(
               icon: Icons.verified_outlined,
-              label: 'Booking Model',
-              value: bookingModelText.toUpperCase(),
+              label:
+                  'Booking', // خففنا الكلمة لـ Booking لتفادي الضغط على المساحة
+              value: _formatBookingModel(bookingModelText),
             ),
           ),
         ],

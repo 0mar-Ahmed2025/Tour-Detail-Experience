@@ -135,8 +135,6 @@ class TourSuccessView extends StatelessWidget {
               imageUrl: package.coverImageUrl ?? "",
               location: "${package.primaryCity}, ${package.primaryCountry}",
               category: categoryName,
-              slug: package.slug,
-              id: package.id.toString(),
               title: package.title.displayValue,
             ),
 
@@ -183,7 +181,10 @@ class TourSuccessView extends StatelessWidget {
                         selectedCode: package.pricing!.primary!.code,
                         basePrice: package.basePriceFrom,
                         currency: package.currency,
-                        isSelected: true,
+                        onOptionSelected: (selectedOption) {
+                          // Handle the selected pricing option here
+                          // For example, you can update the state or perform any action
+                        },
                       ),
                       const SizedBox(height: 32),
                     ],

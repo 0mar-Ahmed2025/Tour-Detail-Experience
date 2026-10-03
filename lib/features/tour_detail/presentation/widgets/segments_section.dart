@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:rehletna_mobile/features/tour_detail/data/models/segment_model.dart';
 import 'package:rehletna_mobile/features/tour_detail/presentation/widgets/segment_item_card_widget.dart';
@@ -11,6 +9,10 @@ class SegmentsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (segments.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,7 +24,7 @@ class SegmentsSection extends StatelessWidget {
                 const Icon(Icons.alt_route, size: 22, color: Color(0xFF7F5700)),
                 const SizedBox(width: 8),
                 Text(
-                  'Segments (${segments.length})',
+                  'Tour Segments', //  'tour_segments'.tr()
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -34,11 +36,11 @@ class SegmentsSection extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
-                color: const Color(0xFFFFDEAE).withValues(alpha: 0.5),
+                color: const Color(0xFFFFF8ED),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
-                '${segments.length} Segments',
+                '${segments.length} Steps',
                 style: const TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
@@ -48,24 +50,35 @@ class SegmentsSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 14),
-        Stack(
-          children: [
-            Positioned(
-              left: 34,
-              top: 32,
-              bottom: 32,
-              child: Container(width: 2, color: const Color(0xFFE6E8EA)),
-            ),
-            Column(
+        const SizedBox(height: 16),
+
+        ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: segments.length,
+          itemBuilder: (context, index) {
+            final isLast = index == segments.length - 1;
+
+            return Column(
               children: [
-                for (int i = 0; i < segments.length; i++) ...[
-                  SegmentItemCardWidget(segment: segments[i], counter: i + 1),
-                  if (i < segments.length - 1) const SizedBox(height: 12),
-                ],
+                SegmentItemCardWidget(
+                  segment: segments[index],
+                  counter: index + 1,
+                ),
+                if (!isLast)
+                  Container(
+                    margin: const EdgeInsets.only(left: 33),
+                    alignment: Alignment.centerLeft,
+                    height: 16,
+                    child: Container(
+                      width: 2,
+                      height: 16,
+                      color: const Color(0xFFD0D5DD),
+                    ),
+                  ),
               ],
-            ),
-          ],
+            );
+          },
         ),
       ],
     );
